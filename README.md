@@ -1,0 +1,54 @@
+# M_0: Significance Mathematics - Mathlib Importance Map
+
+**Akdeniz University** - 19 rounds, 19 definitions, 3 independent validation tests.
+
+## Metric
+
+M(S) = D(S) * sqrt(1+F(S)) * e^(-F(S)/50)
+
+- **D(S)**: Longest dependency chain (longest path in DAG)
+- **F(S)**: Number of distinct fields using S (in-field diversity)
+- **Filter**: inst*, .to*, Mathlib.Meta.*, Lean.* excluded; F < 100
+
+## Validation
+
+| Test | Hypothesis | Result |
+|---|---|---|
+| **P1** | Important theorems > basic theorems | PASS, ~3x |
+| **P5** | New theorems > old theorems | FAIL, 1.008 (novelty is not measured) |
+| **P6** | Wiedijk 100 > random | PASS, **2.365x** |
+
+**P6 is critical:** The 41 theorems in Wiedijk 100 list score an average of 2.4x higher M than 41 random theorems. For the first time, M_0 achieved **external validation**.
+
+## Files
+
+- M_0_scores.csv - 272,672 theorems, raw M
+- M_0_normalized.csv - field-normalized M
+- publish_global_top50.csv - the 50 deepest theorems in Mathlib
+- publish_field_top3.csv - the top 3 theorems for each of 345 fields
+
+## Discovery Predictions (Missing Wiedijk Theorems)
+
+| Theorem | Predicted Importance | Neighborhood Avg. M |
+|---|---|---|
+| 47 Central Limit Theorem | HIGH | 405 |
+| 41 Puiseux Theorem | HIGH | 262 |
+| 61 Ceva Theorem | HIGH | 289 |
+| 84 Morley Theorem | HIGH | 276 |
+| 92 Pick Theorem | HIGH | 254 |
+| 53 pi is transcendental | HIGH | 249 |
+| 56 Hermite-Lindemann | HIGH | 233 |
+
+## Limitations
+
+- **Analysis bias**: Raw M scores MeasureTheory/Analysis higher than other fields (the deepest chains are located there). The per-field top-3 list balances this.
+- **Mathlib-specific**: The metric was derived from Mathlib structure. It must be validated before being applied to Isabelle/Coq.
+- **Novelty is not measured**: P5 was refuted. M measures importance, not novelty.
+
+## Author
+
+[Adin Soyadin] - Akdeniz University
+
+## Citation
+
+This work is built upon Mathlib graph data (MathNetwork/MathlibGraph) and the Lean Community 100.yaml file.
