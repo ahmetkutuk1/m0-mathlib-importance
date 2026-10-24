@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.png" alt="M_0 Logo" width="240">
+</p>
+
 # M_0: Significance Mathematics - Mathlib Importance Map
 
 **Akdeniz University** - 19 rounds, 19 definitions, 3 independent validation tests.
@@ -47,7 +51,7 @@ M(S) = D(S) * sqrt(1+F(S)) * e^(-F(S)/50)
 
 ## Author
 
-[Adin Soyadin] - Akdeniz University
+[Ahmet Kutuk] - Akdeniz University
 
 ## Citation
 
