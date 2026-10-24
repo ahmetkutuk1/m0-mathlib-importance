@@ -30,6 +30,7 @@ M(S) = D(S) * sqrt(1+F(S)) * e^(-F(S)/50)
 - M_0_normalized.csv - field-normalized M
 - publish_global_top50.csv - the 50 deepest theorems in Mathlib
 - publish_field_top3.csv - the top 3 theorems for each of 345 fields
+- [DISCOVERY.md](DISCOVERY.md) - Analysis of missing Wiedijk 100 theorems and infrastructure readiness.
 
 ## Discovery Predictions (Missing Wiedijk Theorems)
 
