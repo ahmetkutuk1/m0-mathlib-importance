@@ -8,7 +8,7 @@
 
 ## 1. Purpose
 
-M_0 was originally proposed and validated on Mathlib (Halka 1–5). Its universality claim rests on whether the same formula produces consistent rankings across different proof assistants and libraries. This document summarises all cross-prover tests performed to date.
+M_0 was originally proposed and validated on Mathlib (Ring 1–5). Its universality claim rests on whether the same formula produces consistent rankings across different proof assistants and libraries. This document summarises all cross-prover tests performed to date.
 
 ---
 
@@ -16,10 +16,10 @@ M_0 was originally proposed and validated on Mathlib (Halka 1–5). Its universa
 
 | Dataset | Prover | Nodes | Edges | Source |
 |---|---|---|---|---|
-| Mathlib (original, Halka 1–5) | Lean 4 | ~272K | ~8.4M | Original extraction (**scores lost**) |
-| Isabelle AFP (Halka 6) | Isabelle | — | — | `afp_m0_scores.json` |
-| coq-ext-lib (Halka 7) | Coq | 10,573 | 27,679 | `pile-of-rocq` v2 |
-| coq-mathcomp (Halka 8) | Coq | 15,654 | 67,162 | `phanerozoic/Coq-MathComp`, filtered |
+| Mathlib (original, Ring 1–5) | Lean 4 | ~272K | ~8.4M | Original extraction (**scores lost**) |
+| Isabelle AFP (Ring 6) | Isabelle | — | — | `afp_m0_scores.json` |
+| coq-ext-lib (Ring 7) | Coq | 10,573 | 27,679 | `pile-of-rocq` v2 |
+| coq-mathcomp (Ring 8) | Coq | 15,654 | 67,162 | `phanerozoic/Coq-MathComp`, filtered |
 | MathNetwork MathlibGraph (independent) | Lean 4 | 308,129 | 8,436,366 | `MathNetwork/MathlibGraph`, commit `534cf0b` |
 
 ---
@@ -46,7 +46,7 @@ Across Mathlib, Isabelle AFP, coq-ext-lib, and coq-mathcomp, the top of the M_0 
 3. **Algebraic infrastructure:** `add_comm`, `mul_comm`, `mulr0`, `mulr1`, `mulrC`
 4. **Bridges (frequent but shallow):** `subsetP`, `mxE`, `eq_bigr`
 
-Deep mathematics (analysis, geometry, number theory) appears far below the top. This is consistent with M_0's known behaviour (Halka 3 — Epistemology: M_0 rewards structural/constructive analysis, not classical abstraction).
+Deep mathematics (analysis, geometry, number theory) appears far below the top. This is consistent with M_0's known behaviour (Ring 3 — Epistemology: M_0 rewards structural/constructive analysis, not classical abstraction).
 
 ---
 
@@ -58,7 +58,7 @@ M_0 was recomputed on this graph using `D = in_degree` and `F = out_degree`.
 
 ### 5.1 Key finding: synthesized edges dominate
 
-The MathNetwork graph includes **compiler-synthesized edges** (typeclass resolution, coercions, instance projections). The original Halka 1–5 extraction likely included only explicit dependencies. This difference has a large effect:
+The MathNetwork graph includes **compiler-synthesized edges** (typeclass resolution, coercions, instance projections). The original Ring 1–5 extraction likely included only explicit dependencies. This difference has a large effect:
 
 **Unfiltered Top 5 (all kinds):**
 
@@ -76,11 +76,11 @@ The MathNetwork graph includes **compiler-synthesized edges** (typeclass resolut
 4. `congrFun'` — M=45,516, D=45,516
 5. `Eq.symm` — M=42,542, D=42,542
 
-Even after filtering to theorems, the top is still dominated by foundational equality infrastructure. This is qualitatively consistent with the original Halka 1–5 finding (that M_0 rewards foundational structural lemmas), but the specific ordering differs from what was originally reported.
+Even after filtering to theorems, the top is still dominated by foundational equality infrastructure. This is qualitatively consistent with the original Ring 1–5 finding (that M_0 rewards foundational structural lemmas), but the specific ordering differs from what was originally reported.
 
 ### 5.2 Honest limitation
 
-The original Halka 1–5 scores are **lost**. The MathNetwork recomputation produces a qualitatively similar profile but cannot reproduce the specific numerical claims (P6 = 2.365×, exact top-300 ordering). These should be treated as original findings pending independent replication.
+The original Ring 1–5 scores are **lost**. The MathNetwork recomputation produces a qualitatively similar profile but cannot reproduce the specific numerical claims (P6 = 2.365×, exact top-300 ordering). These should be treated as original findings pending independent replication.
 
 ---
 
@@ -109,7 +109,7 @@ M_0 does **not** measure:
 
 M_0 is **highly sensitive** to:
 
-- Whether synthesized edges are included (MathNetwork vs. original Halka 1–5)
+- Whether synthesized edges are included (MathNetwork vs. original Ring 1–5)
 - Whether non-theorem nodes (tactics, notations, definitions, constructors) are filtered
 - Whether name matching is type-aware (the `eq_refl` problem in Coq-Coq comparison)
 
@@ -132,7 +132,7 @@ Across four datasets (Mathlib original, Isabelle AFP, coq-ext-lib, coq-mathcomp)
 ## 8. Limitations and Future Work
 
 1. **Sample size:** Cross-library comparisons used 12–19 common names. This is a pilot-scale result; larger overlap is needed for robust statistical claims.
-2. **Lost scores:** Halka 1–5 Mathlib scores were not preserved. Independent recomputation is qualitatively consistent but not numerically identical.
+2. **Lost scores:** Ring 1–5 Mathlib scores were not preserved. Independent recomputation is qualitatively consistent but not numerically identical.
 3. **Synthesized edges:** The effect of compiler-synthesized edges on M_0 has not been systematically quantified.
 4. **Alternative centrality measures:** `pagerank`, `betweenness`, and `dag_layer` are available in MathNetwork and could be compared with M_0's D×F formulation in future work.
 5. **Domain-specific weighting:** A domain-aware M_0 (e.g., weighting by module or namespace) might reduce the dominance of foundational infrastructure and surface domain-specific depth.
@@ -143,8 +143,8 @@ Across four datasets (Mathlib original, Isabelle AFP, coq-ext-lib, coq-mathcomp)
 
 See `COQ_RESULTS.md` Section 6 for the full file list. Key files:
 
-- `coq_m0_v2_scores.json` — Halka 7 final scores
-- `coq_mathcomp_filtered_m0.json` — Halka 8 final scores
+- `coq_m0_v2_scores.json` — Ring 7 final scores
+- `coq_mathcomp_filtered_m0.json` — Ring 8 final scores
 - `mathlib_m0_independent.json` — Independent MathNetwork recomputation
 - `compare_extlib_mathcomp.py` — Coq-Coq correlation
 - `compare_mathlib_mathcomp.py` — Mathlib-Coq correlation

@@ -82,8 +82,13 @@ This project is published as a preprint on Zenodo:
 
 This work is built upon Mathlib graph data (MathNetwork/MathlibGraph) and the Lean Community 100.yaml file.
 
-## Halka 7-8: Coq Cross-Validation (2026-10-25)
+## Ring 7-8: Coq Cross-Validation (2026-10-25)
 
 The Coq universality test is complete. M_0 was run on two independent Coq libraries (coq-ext-lib and coq-mathcomp). Full details: [`COQ_RESULTS.md`](COQ_RESULTS.md), [`CROSS_PROVER_VALIDATION.md`](CROSS_PROVER_VALIDATION.md).
 
-**Important note:** The original Halka 1-5 Mathlib scores were not preserved. M_0 was recomputed on the independent MathNetwork dataset; the qualitative profile is consistent, but the P6 result (2.365×) and the exact top-300 ordering cannot be numerically reproduced. This is recorded as an honest methodological limitation.
+**Important note:** The original Ring 1-5 Mathlib scores were not preserved. M_0 was recomputed on the independent MathNetwork dataset; the qualitative profile is consistent, but the P6 result (2.365×) and the exact top-300 ordering cannot be numerically reproduced. This is recorded as an honest methodological limitation.
+
+
+## Community Impact
+
+- **Ring 4 (Puiseux, Wiedijk #41):** Issue [#45264](https://github.com/leanprover-community/mathlib4/issues/45264) was linked by Mathlib contributor @wwylele to PR [#42313](https://github.com/leanprover-community/mathlib4/pull/42313), the first PR in the Puiseux formalization series (2026-10-25). See DISCOVERY.md.

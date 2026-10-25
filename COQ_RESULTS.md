@@ -1,15 +1,15 @@
-# Halka 7 & 8: Coq Cross-Validation Results
+# Ring 7 & 8: Coq Cross-Validation Results
 
 **Project:** M_0 — A Graph-Theoretic Metric for Mathematical Significance  
 **Author:** Ahmet Kütük (Akdeniz Üniversitesi)  
 **Date:** 2026-10-25  
-**Status:** Halka 7 (coq-ext-lib) and Halka 8 (coq-mathcomp) completed
+**Status:** Ring 7 (coq-ext-lib) and Ring 8 (coq-mathcomp) completed
 
 ---
 
 ## 1. Motivation
 
-Following Halka 6 (Isabelle AFP validation), the natural next step was to test M_0 on Coq, the third major proof assistant. Two independent Coq libraries were selected:
+Following Ring 6 (Isabelle AFP validation), the natural next step was to test M_0 on Coq, the third major proof assistant. Two independent Coq libraries were selected:
 
 - **coq-ext-lib** — a utility library (Bool, Option, List, Monad, String), described upstream as having "Additional dependencies: none"
 - **coq-mathcomp** — the Mathematical Components library (algebra, group theory, linear algebra, poly)
@@ -20,7 +20,7 @@ The goal was twofold: (a) verify that M_0 produces meaningful rankings on Coq de
 
 ## 2. Data Sources
 
-### 2.1 coq-ext-lib (Halka 7)
+### 2.1 coq-ext-lib (Ring 7)
 
 **Source:** HuggingFace `theostos/pile-of-rocq`, config `coq-ext-lib`
 
@@ -29,7 +29,7 @@ Relevant tables:
 - `coq-ext-lib-step_deps`: 77,967 edges, columns include `proof_uid`, `dep_uid`, `name`, `logical_path`
 - `coq-ext-lib-toc_nodes`: 172,249 TOC nodes, columns include `name`, `kind`, `data_uid`
 
-### 2.2 coq-mathcomp (Halka 8)
+### 2.2 coq-mathcomp (Ring 8)
 
 **Source:** HuggingFace `phanerozoic/Coq-MathComp`
 
@@ -38,7 +38,7 @@ Relevant tables:
 
 ---
 
-## 3. Halka 7: coq-ext-lib — Methodological Failure and Correction
+## 3. Ring 7: coq-ext-lib — Methodological Failure and Correction
 
 ### 3.1 v1: `axioms` column (FAILED)
 
@@ -77,13 +77,13 @@ The correction joined `step_deps` (containing `proof_uid` + `dep_uid` + `name`) 
 4. `Rle_dec` (M=259.93, D=138, F=3)
 5. `mul_comm` (M=255.78, D=109, F=6)
 
-**Interpretation:** The top of the ranking is dominated by foundational infrastructure (`f_equal`, `add_comm`, `mul_comm`) rather than deep mathematics. This is consistent with M_0's known behaviour on Mathlib (Halka 1–5), where basic equality and algebra lemmas also ranked highly.
+**Interpretation:** The top of the ranking is dominated by foundational infrastructure (`f_equal`, `add_comm`, `mul_comm`) rather than deep mathematics. This is consistent with M_0's known behaviour on Mathlib (Ring 1–5), where basic equality and algebra lemmas also ranked highly.
 
 **Caveat:** The `coq-ext-lib` M_0 values are not directly comparable to Mathlib values because ext-lib is a small utility library; F values are compressed (max 15 vs. 40+ in Mathlib). This is a scale limitation of the dataset, not a failure of the metric.
 
 ---
 
-## 4. Halka 8: coq-mathcomp — Type Filtering is Critical
+## 4. Ring 8: coq-mathcomp — Type Filtering is Critical
 
 ### 4.1 Unfiltered run (FAILED)
 
@@ -131,9 +131,9 @@ Filtering to `type ∈ {Lemma, Theorem, Fact, Corollary, Proposition, Remark, Ex
 - Order theory: `le_trans`, `eq_sym`
 - Polynomials: `polyP`
 
-This profile is qualitatively consistent with Mathlib (Halka 1–5) and Isabelle AFP (Halka 6): foundational and algebraic infrastructure dominates the top.
+This profile is qualitatively consistent with Mathlib (Ring 1–5) and Isabelle AFP (Ring 6): foundational and algebraic infrastructure dominates the top.
 
-**Honest caveat:** `subsetP` and `mxE` are "bridge lemmas" (subset ↔ predicate, matrix ↔ function), not deep mathematics. M_0 rewards frequency of use, not conceptual depth. This was already known from Halka 3 (Epistemology) and is restated here.
+**Honest caveat:** `subsetP` and `mxE` are "bridge lemmas" (subset ↔ predicate, matrix ↔ function), not deep mathematics. M_0 rewards frequency of use, not conceptual depth. This was already known from Ring 3 (Epistemology) and is restated here.
 
 ---
 
@@ -169,14 +169,14 @@ Normalization (z-score, min-max, mean/max) does **not** change Spearman ρ — a
 |---|---|
 | `coq_m0.py` | v1 script (axioms column) — preserved for reproducibility of failure |
 | `coq_m0_v2.py` | v2 script (name-based join) — produced `coq_m0_v2_scores.json` |
-| `coq_m0_mathcomp.py` | Halka 8 unfiltered script — produced `coq_mathcomp_m0_scores.json` |
-| `coq_m0_mathcomp_filtered.py` | Halka 8 filtered script — produced `coq_mathcomp_filtered_m0.json` |
+| `coq_m0_mathcomp.py` | Ring 8 unfiltered script — produced `coq_mathcomp_m0_scores.json` |
+| `coq_m0_mathcomp_filtered.py` | Ring 8 filtered script — produced `coq_mathcomp_filtered_m0.json` |
 | `compare_extlib_mathcomp.py` | Coq-Coq correlation script |
 | `compare_normalized.py` | Normalization variants (Spearman invariant) |
 | `coq_m0_scores.json` | v1 output (all zeros — preserved for honesty) |
-| `coq_m0_v2_scores.json` | Halka 7 final M_0 scores |
-| `coq_mathcomp_m0_scores.json` | Halka 8 unfiltered (includes tactics — preserved for honesty) |
-| `coq_mathcomp_filtered_m0.json` | Halka 8 final M_0 scores |
+| `coq_m0_v2_scores.json` | Ring 7 final M_0 scores |
+| `coq_mathcomp_m0_scores.json` | Ring 8 unfiltered (includes tactics — preserved for honesty) |
+| `coq_mathcomp_filtered_m0.json` | Ring 8 final M_0 scores |
 
 ---
 
@@ -190,8 +190,8 @@ The honest summary: **M_0 captures a library-independent signal for foundational
 
 ## 8. Reproducibility Note
 
-The Halka 1–5 Mathlib scores (`mathlib_m0_scores.json`) were **not preserved**. This means the original P6 result (Wiedijk 100 theorems scoring 2.365× random) and the top-300 significance map cannot be numerically reproduced from the original data.
+The Ring 1–5 Mathlib scores (`mathlib_m0_scores.json`) were **not preserved**. This means the original P6 result (Wiedijk 100 theorems scoring 2.365× random) and the top-300 significance map cannot be numerically reproduced from the original data.
 
 To partially compensate, M_0 was recomputed on the independent `MathNetwork/MathlibGraph` dataset (`v2/declaration/metrics.csv`, commit `534cf0b`) and the qualitative profile was checked. See `CROSS_PROVER_VALIDATION.md` for details.
 
-This is a methodological limitation and is reported honestly. The qualitative conclusions of Halka 1–5 remain supported by the independent recomputation, but the specific numerical claims (2.365× ratio, exact top-300 ordering) should be treated as **original findings pending independent replication**.
+This is a methodological limitation and is reported honestly. The qualitative conclusions of Ring 1–5 remain supported by the independent recomputation, but the specific numerical claims (2.365× ratio, exact top-300 ordering) should be treated as **original findings pending independent replication**.

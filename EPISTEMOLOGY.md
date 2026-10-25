@@ -23,4 +23,4 @@ The highest-scoring theorems are concentrated in `MeasureTheory`, `intervalInteg
 2. **Structural Significance:** The metric rewards theorems that serve as foundational bridges across multiple domains, which aligns with how mathematicians intuitively judge importance.
 3. **Honest Limitation:** The keyword heuristic is not a full Lean `#print axioms` scan, but it provides a strong statistical signal.
 
-*Generated during Halka 3 (Epistemology) on October 25, 2026.*
+*Generated during Ring 3 (Epistemology) on October 25, 2026.*
