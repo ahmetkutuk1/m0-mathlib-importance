@@ -1,6 +1,7 @@
 # M_0: A Graph-Theoretic Metric for Mathematical Significance in Mathlib
 
 **Ahmet Kutuk**  
+**DOI:** [10.5281/zenodo.23630551](https://doi.org/10.5281/zenodo.23630551)
 *Akdeniz University*  
 *October 25, 2026*
 

@@ -69,6 +69,11 @@ You can use the M_0 metric to discover missing infrastructure in your own field 
 
 *For a full list of top theorems per field, see `publish_field_top3.csv`.*
 
+## Publication
+
+This project is published as a preprint on Zenodo:
+**DOI:** [10.5281/zenodo.23630551](https://doi.org/10.5281/zenodo.23630551)
+
 ## Citation
 
 This work is built upon Mathlib graph data (MathNetwork/MathlibGraph) and the Lean Community 100.yaml file.
