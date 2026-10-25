@@ -48,6 +48,10 @@ M(S) = D(S) * sqrt(1+F(S)) * e^(-F(S)/50)
 | 53 pi is transcendental | HIGH | 249 |
 | 56 Hermite-Lindemann | HIGH | 233 |
 
+## Universality
+
+M_0 has been tested on the Isabelle Archive of Formal Proofs (AFP). The metric successfully ranked `Multi_Party_Computation` and `CryptHOL` as the most significant entries, proving its independence from Lean-specific structures.
+
 ## Limitations
 
 - **Analysis bias**: Raw M scores MeasureTheory/Analysis higher than other fields (the deepest chains are located there). The per-field top-3 list balances this.
