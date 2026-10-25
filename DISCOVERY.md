@@ -18,7 +18,11 @@
 
 ### 1. Central Limit Theorem (The Strongest Candidate)
 - **Status:** Infrastructure is highly mature. Mathlib has `ProbabilityTheory.IsGaussian` and related measure theory.
-- **Evidence:** The neighborhood contains `MeasureTheory.integral_const` (M=417) and `MeasureTheory.integral_nonneg` (M=404).
+- **Evidence:** The neighborhood contains `MeasureTheory.integral_const` (M=417) and `MeasureTheory.integral_nonneg` (M=404). 
+- **Gaussian Specifics:** Filtering for `IsGaussian` reveals the core lemmas:
+  - `isGaussian_of_charFunDual_eq` (M: 259)
+  - `IsGaussian.charFun_eq` (M: 257)
+  - `isGaussian_conv` (M: 264)
 - **Verdict:** The mathematical machinery is ready. A formalization of the Central Limit Theorem would sit at the very top of the M_0 hierarchy.
 
 ### 2. Geometry Theorems (Ceva, Morley, Pick)
@@ -29,7 +33,6 @@
 ### 3. Transcendental Numbers (π and Hermite-Lindemann)
 - **Status:** Missing, but our automated keyword search produced false positives.
 - **Note:** The keyword `transcendental` matched field-specific algebraic definitions (e.g., `Algebra.transcendental`) rather than real/complex transcendentals. A manual search for `Real.pi` or `Complex.exp` is required.
-- **Verdict:** Further manual investigation needed.
 
 ## Conclusion for Halka 2
 The M_0 metric successfully identified **Central Limit Theorem** as the most immediate formalization target in Mathlib. Geometry theorems require a longer-term effort to build out the necessary infrastructure.
