@@ -58,6 +58,17 @@ M(S) = D(S) * sqrt(1+F(S)) * e^(-F(S)/50)
 
 [Ahmet Kutuk] - Akdeniz University
 
+## How to use M_0
+
+You can use the M_0 metric to discover missing infrastructure in your own field of mathematics within Mathlib. Here is the workflow:
+
+1. **Find your field's baseline:** Filter `M_0_final_ranked.csv` by your `field` (e.g., `EuclideanGeometry`). Look at the top 10 highest M_0 theorems. These are the "pillars" of your field.
+2. **Identify the gap:** If a major theorem (like Wiedijk 100) is missing, check the M_0 neighborhood of its expected dependencies. A high neighborhood average (M > 250) means the mathematical machinery is ready, and the theorem is ripe for formalization.
+3. **Visualize the structure:** Run `visualize_m0.py` to see how your field connects to others. Deep integration (many edges to `MeasureTheory` or `Algebra`) suggests foundational importance.
+4. **Contribute:** Use the `DISCOVERY.md` methodology to propose new targets to the Lean community.
+
+*For a full list of top theorems per field, see `publish_field_top3.csv`.*
+
 ## Citation
 
 This work is built upon Mathlib graph data (MathNetwork/MathlibGraph) and the Lean Community 100.yaml file.
