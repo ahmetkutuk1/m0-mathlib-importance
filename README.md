@@ -14,6 +14,10 @@ M(S) = D(S) * sqrt(1+F(S)) * e^(-F(S)/50)
 - **F(S)**: Number of distinct fields using S (in-field diversity)
 - **Filter**: inst*, .to*, Mathlib.Meta.*, Lean.* excluded; F < 100
 
+## Significance Map
+
+![M_0 Significance Map](M_0_Significance_Map.png)
+
 ## Validation
 
 | Test | Hypothesis | Result |
