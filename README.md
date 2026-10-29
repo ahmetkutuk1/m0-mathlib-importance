@@ -92,3 +92,5 @@ The Coq universality test is complete. M_0 was run on two independent Coq librar
 ## Community Impact
 
 - **Ring 4 (Puiseux, Wiedijk #41):** Issue [#45264](https://github.com/leanprover-community/mathlib4/issues/45264) was linked by Mathlib contributor @wwylele to PR [#42313](https://github.com/leanprover-community/mathlib4/pull/42313), the first PR in the Puiseux formalization series (2026-10-25). See DISCOVERY.md.
+
+- **Update (2026-10-29):** Dean Cureton (@deancureton), author of PR #42313, confirmed the Puiseux formalization is complete and will be upstreamed in ~6 PRs. This validates the Discovery Engine's ability to identify critical missing infrastructure.

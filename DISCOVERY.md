@@ -54,3 +54,8 @@ The M_0 graph dataset (MathNetwork/MathlibGraph) used in this analysis likely di
 Mathlib contributor @wwylele replied to Issue #45264, pointing to PR #42313 as the starting point of the Puiseux formalization effort (Wiedijk #41). The PR adds LaurentSeries.expand / contract ring endomorphisms and Hahn series embDomain composition, described by its author as the first of a series of PRs formalizing Puiseux series and Puiseux theorem.
 
 This confirms the Ring 2 finding: the algebraic infrastructure for Puiseux was identified as a gap and is now being actively built upstream. No causal claim is made - the PR may predate the discovery report - but the thread is now linked to the upstreaming effort.
+
+
+## Update 2 (2026-10-29): Formalization confirmed by the author
+
+Dean Cureton (@deancureton), the author of PR #42313, confirmed in Issue #45264 that the Puiseux formalization is already complete and will be upstreamed to Mathlib as a series of approximately 6 PRs. This directly validates the Discovery Engine finding from Ring 2: the tool correctly identified a high-value missing theorem that was already being worked on by the community.
